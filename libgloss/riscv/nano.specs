@@ -9,7 +9,7 @@
 -lc_nano
 
 *nano_libgloss:
-%{specs=nosys.specs:-lnosys} %{!specs=nosys.specs:-lgloss_nano}
+%{specs=nosys.specs:-lnosys} %{!specs=nosys.specs:%{msys-lib=*:-l%*}} %{!msys-lib=*:%{!specs=nosys.specs:-lgloss_nano}}
 
 *link_gcc_c_sequence:
 %(nano_link_gcc_c_sequence) --start-group %G %(nano_libc) %(nano_libgloss) --end-group
