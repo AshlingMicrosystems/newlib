@@ -4,7 +4,7 @@
 %rename link	semihost_link
 
 *lib:
---start-group -lc -lsemihost --end-group
+--start-group -lc -lsemihost %{msys-lib=*:-l%*} --end-group
 
 *link:
 %(semihost_link) %:replace-outfile(-lgloss -lsemihost)
